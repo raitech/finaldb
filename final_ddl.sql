@@ -15,15 +15,15 @@ um subcojunto de colunas.
 
 uma solução seria usar REF CURSOR, que o Java entende como ResultSet. :)
 */
+CREATE OR REPLACE TYPE data_array_t IS VARRAY(60) OF VARCHAR2(1000);
+--CREATE OR REPLACE TYPE col_cons_types_t IS VARRAY(60) OF VARCHAR2(1000); -- INDEX BY VARCHAR2(1000);
+CREATE OR REPLACE TYPE cols_names_t IS VARRAY(60) OF VARCHAR2(1000);
+CREATE OR REPLACE TYPE cols_types_t IS VARRAY(60) OF VARCHAR2(1000);
+CREATE OR REPLACE TYPE cons_cols_t  IS VARRAY(60) OF VARCHAR2(1000);;
 
 CREATE OR REPLACE PACKAGE maneja_tabela AS
-	TYPE data_array_t IS VARRAY(60) OF VARCHAR2(1000);
-  TYPE col_cons_types_t IS TABLE OF VARCHAR2(1000) INDEX BY VARCHAR2(1000);
-	TYPE cols_names_t IS VARRAY(60) OF user_tab_cols.column_name%TYPE;
-	TYPE cols_types_t IS VARRAY(60) OF user_tab_cols.data_type%TYPE;
-  TYPE cons_cols_t  IS VARRAY(60) OF user_cons_columns.column_name%TYPE;
-	TYPE tab_cols_info_t IS RECORD (cols_names cols_names_t, cols_types cols_types_t);
 
+  TYPE tab_cols_info_t IS RECORD (cols_names cols_names_t, cols_types cols_types_t);
 	-- function pra fazer busca de um elemento num varray
 	-- pega um tipo de dentro do varray e o varray, retorna -1 se nao
 	-- encontrou ou o indice, se encontrou
@@ -65,15 +65,15 @@ CREATE OR REPLACE PACKAGE maneja_tabela AS
 
   set serveroutput on;
   declare
-    attr maneja_tabela.data_array_t;
-    attrcons maneja_tabela.col_cons_types_t;
+    attr data_array_t;
+    attrcons data_array_t;
     nattr NUMBER;
     cur sys_refcursor := maneja_tabela.listar('l01_usuario', nattr, attrcons, attr);
     v_tab l01_usuario%ROWTYPE;
   begin
     dbms_output.put_line('No de atributos: ' || nattr);
     for i in attr.first .. attr.last loop
-      dbms_output.put_line(attr(i) || ': ' || attrcons(attr(i)));
+      dbms_output.put_line(attr(i) || ': ' || attrcons(i));
     end loop;
     
     loop
@@ -88,7 +88,7 @@ CREATE OR REPLACE PACKAGE maneja_tabela AS
 	FUNCTION listar(
 		nome_tabela user_objects.object_name%TYPE,
     c_cols OUT NUMBER,
-    n_cols_cons OUT col_cons_types_t,
+    n_cols_cons OUT data_array_t,
     n_cols OUT data_array_t
     -- max     NUMBER DEFAULT 60, -- default 60 => exibir 60 resultados por vez
 		-- attr		data_array_t DEFAULT data_array_t(), -- default vazio => listar tudo
@@ -284,7 +284,7 @@ CREATE OR REPLACE PACKAGE BODY maneja_tabela AS
 	FUNCTION listar(
 		nome_tabela user_objects.object_name%TYPE,
     c_cols OUT NUMBER,
-    n_cols_cons OUT col_cons_types_t,
+    n_cols_cons OUT data_array_t,
     n_cols OUT data_array_t
 	) RETURN SYS_REFCURSOR AS
 
@@ -300,6 +300,8 @@ CREATE OR REPLACE PACKAGE BODY maneja_tabela AS
     tab_num NUMBER := 0;
     cur SYS_REFCURSOR;
     stmt VARCHAR2(10000);
+
+    idx1 NUMBER := 0;
   BEGIN
 		SELECT COUNT(*) INTO tab_num FROM user_objects WHERE object_type = 'TABLE' OR object_type = 'VIEW' AND object_name = n_tab;
 		IF tab_num > 0 THEN
@@ -311,11 +313,13 @@ CREATE OR REPLACE PACKAGE BODY maneja_tabela AS
       OPEN cur FOR stmt;
 
       n_cols := data_array_t();
+      n_cols_cons := data_array_t();
 
       FOR i IN info.cols_names.FIRST .. info.cols_names.LAST LOOP
         n_cols.EXTEND;
         n_cols(n_cols.LAST) := info.cols_names(i);
-        n_cols_cons(info.cols_names(i)) := 'NULL';
+        n_cols_cons.EXTEND;
+        n_cols_cons(n_cols_cons.LAST) := 'NULL';
       END LOOP;
 
       OPEN c_cons_cols;
@@ -323,10 +327,12 @@ CREATE OR REPLACE PACKAGE BODY maneja_tabela AS
       LOOP
         FETCH c_cons_cols INTO v_cons_cols;
         EXIT WHEN c_cons_cols%NOTFOUND;
-        IF n_cols_cons(v_cons_cols.column_name) = 'NULL' THEN
-          n_cols_cons(v_cons_cols.column_name) := v_cons_cols.constraint_type;
+
+        idx1 := search_varray(v_cons_cols.column_name, n_cols);
+        IF n_cols_cons(idx1) = 'NULL' THEN
+          n_cols_cons(idx1) := v_cons_cols.constraint_type;
         ELSE
-          n_cols_cons(v_cons_cols.column_name) := n_cols_cons(v_cons_cols.column_name) || ',' || v_cons_cols.constraint_type;
+          n_cols_cons(idx1) := n_cols_cons(idx1) || ',' || v_cons_cols.constraint_type;
         END IF;
       END LOOP;
 
@@ -474,7 +480,7 @@ relação apenas a estas disciplinas onde houve reprovação, indicar para cada 
 conseguiu conclusão ou se ainda precisa refazê-la;
 */
 
-CREATE OR REPLACE VIEW v_
+CREATE OR REPLACE VIEW v_lista_cursos AS
   SELECT NOMEUSUARIO, NOMEDISC, 'PRECISA REFAZÊ-LA' AS SITUACAO
     FROM L09_CURSA CUR 
     LEFT JOIN L01_USUARIO U ON CUR.CPFCURSA = U.CPF_USR 
@@ -495,7 +501,7 @@ CREATE OR REPLACE VIEW v_
         )AND APROVADOCURSA = 'S';
 
 --VIEW DO EXERCICIO 5 - SPLINTER
-CREATE OR REPLACE VIEW v_disciplina_referencia AS
+CREATE OR REPLACE VIEW v_disciplinas_referencias AS
   SELECT UNIQUE
   d.nomedisc AS "Disciplina",
   r.qtdpaginas AS "PÃ¡ginas",
