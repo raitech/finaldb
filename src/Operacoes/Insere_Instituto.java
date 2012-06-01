@@ -1,0 +1,102 @@
+package Operacoes;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import javax.swing.WindowConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.SwingUtilities;
+
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
+public class Insere_Instituto extends javax.swing.JFrame {
+	private JLabel jLabel1;
+	private JLabel jLabel2;
+	private JLabel jLabel3;
+	private JButton btnInsereInst;
+	private JTextField txtCidadeInstituto;
+	private JTextField txtSiglaInstituto;
+	private JTextField txtNomeInstituto;
+
+		
+	public Insere_Instituto() {
+		super();
+		initGUI();
+		setTitle("Inserir Instituto");
+	}
+	
+	private void initGUI() {
+		try {
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			getContentPane().setLayout(null);
+			{
+				jLabel1 = new JLabel();
+				getContentPane().add(jLabel1);
+				jLabel1.setText("Nome Instituto:");
+				jLabel1.setBounds(12, 61, 85, 16);
+			}
+			{
+				jLabel2 = new JLabel();
+				getContentPane().add(jLabel2);
+				jLabel2.setText("Sigla instituto:");
+				jLabel2.setBounds(12, 91, 77, 16);
+			}
+			{
+				jLabel3 = new JLabel();
+				getContentPane().add(jLabel3);
+				jLabel3.setText("Cidade:");
+				jLabel3.setBounds(17, 119, 59, 16);
+			}
+			{
+				btnInsereInst = new JButton();
+				getContentPane().add(btnInsereInst);
+				btnInsereInst.setText("INSERIR");
+				btnInsereInst.setBounds(276, 178, 90, 25);
+				btnInsereInst.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btnInsereInstActionPerformed(evt);
+					}
+				});
+			}
+			{
+				txtNomeInstituto = new JTextField();
+				getContentPane().add(txtNomeInstituto);
+				txtNomeInstituto.setBounds(101, 58, 265, 23);
+			}
+			{
+				txtSiglaInstituto = new JTextField();
+				getContentPane().add(txtSiglaInstituto);
+				txtSiglaInstituto.setBounds(101, 88, 265, 23);
+			}
+			{
+				txtCidadeInstituto = new JTextField();
+				getContentPane().add(txtCidadeInstituto);
+				txtCidadeInstituto.setBounds(101, 116, 265, 23);
+			}
+			pack();
+			this.setSize(400, 248);
+		} catch (Exception e) {
+		    //add your error handling code here
+			e.printStackTrace();
+		}
+	}
+	
+	private void btnInsereInstActionPerformed(ActionEvent evt) {
+		dispose();
+	}
+
+}

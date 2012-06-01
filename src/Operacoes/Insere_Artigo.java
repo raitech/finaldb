@@ -1,0 +1,116 @@
+package Operacoes;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+import javax.swing.WindowConstants;
+import javax.swing.SwingUtilities;
+
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
+public class Insere_Artigo extends javax.swing.JFrame {
+	private JLabel jLabel1;
+	private JTextField txtCod;
+	private JLabel jLabel2;
+	private JTextField txtURL;
+	private JLabel jLabel3;
+	private JButton btnVoltar;
+	private JButton btnOK;
+	private JTextField txtConf;
+
+	public Insere_Artigo() {
+		super();
+		initGUI();
+		setTitle("Inserir Artigo");
+	}
+	
+	private void initGUI() {
+		try {
+			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+			getContentPane().setLayout(null);
+			{
+				jLabel1 = new JLabel();
+				getContentPane().add(jLabel1);
+				jLabel1.setText("Código:");
+				jLabel1.setBounds(27, 27, 42, 16);
+			}
+			{
+				txtCod = new JTextField();
+				getContentPane().add(txtCod);
+				txtCod.setBounds(75, 24, 273, 23);
+			}
+			{
+				jLabel2 = new JLabel();
+				getContentPane().add(jLabel2);
+				jLabel2.setText("URL:");
+				jLabel2.setBounds(27, 60, 24, 16);
+			}
+			{
+				txtURL = new JTextField();
+				getContentPane().add(txtURL);
+				txtURL.setBounds(75, 57, 273, 23);
+			}
+			{
+				jLabel3 = new JLabel();
+				getContentPane().add(jLabel3);
+				jLabel3.setText("Conferência:");
+				jLabel3.setBounds(27, 88, 80, 16);
+			}
+			{
+				txtConf = new JTextField();
+				getContentPane().add(txtConf);
+				txtConf.setBounds(101, 85, 247, 23);
+			}
+			{
+				btnOK = new JButton();
+				getContentPane().add(btnOK);
+				btnOK.setText("OK");
+				btnOK.setBounds(258, 131, 90, 25);
+				btnOK.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btnOKActionPerformed(evt);
+					}
+				});
+			}
+			{
+				btnVoltar = new JButton();
+				getContentPane().add(btnVoltar);
+				btnVoltar.setText("VOLTAR");
+				btnVoltar.setBounds(27, 131, 90, 25);
+				btnVoltar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btnVoltarActionPerformed(evt);
+					}
+				});
+			}
+			pack();
+			this.setSize(400, 206);
+		} catch (Exception e) {
+		    //add your error handling code here
+			e.printStackTrace();
+		}
+	}
+	
+	private void btnOKActionPerformed(ActionEvent evt) {
+		System.out.println("btnOK.actionPerformed, event="+evt);
+		//TODO add your code for btnOK.actionPerformed
+	}
+	
+	private void btnVoltarActionPerformed(ActionEvent evt) {
+		dispose();
+	}
+
+}
