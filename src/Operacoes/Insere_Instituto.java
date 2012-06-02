@@ -31,6 +31,8 @@ public class Insere_Instituto extends javax.swing.JFrame {
 	private JTextField txtCidadeInstituto;
 	private JTextField txtSiglaInstituto;
 	private JTextField txtNomeInstituto;
+	private String NomeTabela = new String("L06_INSTITUTO");
+	
 
 		
 	public Insere_Instituto() {
@@ -96,6 +98,19 @@ public class Insere_Instituto extends javax.swing.JFrame {
 	}
 	
 	private void btnInsereInstActionPerformed(ActionEvent evt) {
+		String[] AtributosNovos = new String[3];
+		AtributosNovos[0] = txtSiglaInstituto.getText();
+		AtributosNovos[1] = txtNomeInstituto.getText();
+		AtributosNovos[2] = txtCidadeInstituto.getText();
+		
+		String[] NomeColuna = new String[3];
+		 NomeColuna[0] = "SIGLAINSTITUTO";
+		 NomeColuna[1] = "NOMEINSTITUTO";
+		 NomeColuna[2] = "CIDADEINSTITUTO";
+		
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
+				 
 		dispose();
 	}
 

@@ -22,7 +22,7 @@ public class Insere_Adm extends javax.swing.JFrame {
 	private JLabel jLabel4;
 	private JLabel jLabel5;
 	private JButton btnInsereAluno;
-	private JTextField txtCodCurso;
+	private JTextField txtPriv;
 	private JLabel jLabel7;
 	private JTextField txtDataNasc;
 	private JTextField txtNomeUser;
@@ -31,6 +31,8 @@ public class Insere_Adm extends javax.swing.JFrame {
 	private JTextField txtRG;
 	private JTextField txtSenha;
 	private JLabel jLabel6;
+	private String NomeTabelaAdm = new String("L05_ADMINISTRADOR");
+	private String NomeTabelaUsr = new String("L01_USUARIO");
 
 	public Insere_Adm() {
 		super();
@@ -115,9 +117,9 @@ public class Insere_Adm extends javax.swing.JFrame {
 				jLabel7.setBounds(30, 167, 90, 16);
 			}
 			{
-				txtCodCurso = new JTextField();
-				getContentPane().add(txtCodCurso);
-				txtCodCurso.setBounds(132, 164, 220, 23);
+				txtPriv = new JTextField();
+				getContentPane().add(txtPriv);
+				txtPriv.setBounds(132, 164, 220, 23);
 			}
 			{
 				btnInsereAluno = new JButton();
@@ -139,6 +141,42 @@ public class Insere_Adm extends javax.swing.JFrame {
 	}
 	
 	private void btnInsereAlunoActionPerformed(ActionEvent evt) {
+		/*Pegando os atributos para user:*/
+		 String[] AtributosNovosUsr = new String[7];
+		 AtributosNovosUsr[0] = txtCPF.getText();
+		 AtributosNovosUsr[1] = txtRG.getText();
+		 AtributosNovosUsr[2] = txtDataNasc.getText();
+		 AtributosNovosUsr[3] =  txtNomeUser.getText();
+		 AtributosNovosUsr[4] =  txtSenha.getText();
+		 AtributosNovosUsr[5] =  txtNomeCompleto.getText();
+		 AtributosNovosUsr[6] =  "administrador";
+		 
+		 String[] NomeColunaUsr = new String[7];		 
+		 NomeColunaUsr[0] = "CPF_USR";
+		 NomeColunaUsr[1] = "RG_USR";
+		 NomeColunaUsr[2] = "DATANASCIMENTO";
+		 NomeColunaUsr[3] = "NOMEUSUARIO";
+		 NomeColunaUsr[4] = "SENHA";
+		 NomeColunaUsr[5] = "NOMECOMPLETO";
+		 NomeColunaUsr[6] = "TIPO_USUARIO";
+		 
+		 /*inserir primeiro em usuarios*/
+		 Trab_final.Interface inter = new Trab_final.Interface();
+		 inter.inserir(NomeTabelaUsr, NomeColunaUsr, AtributosNovosUsr);		 
+		 
+		 /*inserir o usuario no campo que foi especificado, no caso Aluno*/
+		 //pegando os campos para aluno
+		 String[] AtributosNovosAl = new String[2];
+		 AtributosNovosAl[0] = txtCPF.getText();
+		 AtributosNovosAl[1] = txtPriv.getText();
+		 
+		 
+		 String[] NomeColunaAl = new String[2];
+		 NomeColunaAl[0] = "CPFADMINISTRADOR";
+		 NomeColunaAl[1] = "PRIVILEGIOADMINISTRADOR";
+		 
+		 
+		 inter.inserir(NomeTabelaAdm,NomeColunaAl,AtributosNovosAl);
 		dispose();
 	}
 

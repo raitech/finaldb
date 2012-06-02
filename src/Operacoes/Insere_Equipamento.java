@@ -27,20 +27,8 @@ public class Insere_Equipamento extends javax.swing.JFrame {
 	private JTextField txtEquip;
 	private JTextField txtCodEquip;
 	private JButton btnInsereEqui;
+	private String NomeTabela = new String("L12_EQUIPAMENTO");
 
-	/**
-	* Auto-generated main method to display this JFrame
-	*/
-	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				Insere_Equipamento inst = new Insere_Equipamento();
-				inst.setLocationRelativeTo(null);
-				inst.setVisible(true);
-			}
-		});
-	}
-	
 	public Insere_Equipamento() {
 		super();
 		initGUI();
@@ -93,6 +81,16 @@ public class Insere_Equipamento extends javax.swing.JFrame {
 	}
 	
 	private void btnInsereEquiActionPerformed(ActionEvent evt) {
+		String[] AtributosNovos = new String[2];
+		AtributosNovos[0] = txtCodEquip.getText();
+		AtributosNovos[1] = txtEquip.getText();
+		
+		String[] NomeColuna = new String[2];
+		 NomeColuna[0] = "CODEQUIPAMENTO";
+		 NomeColuna[1] = "NOMEEQUIPAMENTO";
+		
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
 		dispose();
 	}
 

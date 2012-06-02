@@ -43,6 +43,7 @@ public class Insere_Disc extends javax.swing.JFrame {
 	private JLabel jLabel8;
 	private JLabel jLabel7;
 	private JLabel jLabel6;
+	private String NomeTabela = new String("L07_DISCIPLINA");
 
 	public Insere_Disc() {
 		super();
@@ -184,7 +185,35 @@ public class Insere_Disc extends javax.swing.JFrame {
 	}
 	
 	private void btnOKInsDicActionPerformed(ActionEvent evt) {
-		dispose();
+		 /*Pegando os atributos para user:*/
+		 String[] AtributosNovos = new String[10];
+		 AtributosNovos[0] = txtSiglaDisc.getText();
+		 AtributosNovos[1] = txtCPFprof.getText();
+		 AtributosNovos[2] = txtSiglaIns.getText();
+		 AtributosNovos[3] =  txtCreditos.getText();
+		 AtributosNovos[4] =  txtQtdAulas.getText();
+		 AtributosNovos[5] =  txtSemestre.getText();
+		 AtributosNovos[6] =  txtAno.getText();
+		 AtributosNovos[7] =  txtNomeDisc.getText();
+		 AtributosNovos[8] =  txtPrograma.getText();
+		 AtributosNovos[9] =  txtMetodoAva.getText();
+		 
+		 String[] NomeColuna = new String[10];		 
+		 NomeColuna[0] = "SIGLADISC";
+		 NomeColuna[1] = "CPFPROFDISC";
+		 NomeColuna[2] = "SIGLAINSTITUTODISC";
+		 NomeColuna[3] = "QTDCREDITOSTOTALDISC";
+		 NomeColuna[4] = "QTDAULASTOTALDISC";
+		 NomeColuna[5] = "SEMESTREDISC";
+		 NomeColuna[6] = "ANODISC";
+		 NomeColuna[7] = "NOMEDISC";
+		 NomeColuna[8] = "PROGRAMADISC";
+		 NomeColuna[9] = "METODOAVALDISC";
+		 
+		 /*inserir primeiro em usuarios*/
+		 Trab_final.Interface inter = new Trab_final.Interface();
+		 inter.inserir(NomeTabela, NomeColuna, AtributosNovos);		
+		 dispose();
 	}
 
 }

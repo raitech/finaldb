@@ -47,10 +47,11 @@ public class Insere_Aluno extends javax.swing.JFrame {
 	private JLabel jLabel6;
 	private String NomeTabelaAl = new String("L03_ALUNO");
 	private String NomeTabelaUsr = new String("L01_USUARIO");
+	/*
 	private String [] AtributosNovosUsr;
 	private String [] NomeColunaUsr;
 	private String [] AtributosNovosAl;
-	private String [] NomeColunaAl;
+	private String [] NomeColunaAl;*/
 
 	public Insere_Aluno() {
 		super();
@@ -181,10 +182,6 @@ public class Insere_Aluno extends javax.swing.JFrame {
 	}
 	
 	private void btnInsereAlunoActionPerformed(ActionEvent evt) {
-		 
-		 
-		 
-		 
 		 /*Pegando os atributos para user:*/
 		 String[] AtributosNovosUsr = new String[7];
 		 AtributosNovosUsr[0] = txtCPF.getText();

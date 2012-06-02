@@ -43,6 +43,8 @@ public class Insere_Professor extends javax.swing.JFrame {
 	private JTextField txtRG;
 	private JTextField txtSenha;
 	private JLabel jLabel6;
+	private String NomeTabelaProf = new String("L04_PROFESSOR");
+	private String NomeTabelaUsr = new String("L01_USUARIO");
 
 	public Insere_Professor() {
 		super();
@@ -174,6 +176,44 @@ public class Insere_Professor extends javax.swing.JFrame {
 	}
 	
 	private void btnInsereAlunoActionPerformed(ActionEvent evt) {
+		 /*Pegando os atributos para user:*/
+		 String[] AtributosNovosUsr = new String[7];
+		 AtributosNovosUsr[0] = txtCPF.getText();
+		 AtributosNovosUsr[1] = txtRG.getText();
+		 AtributosNovosUsr[2] = txtDataNasc.getText();
+		 AtributosNovosUsr[3] =  txtNomeUser.getText();
+		 AtributosNovosUsr[4] =  txtSenha.getText();
+		 AtributosNovosUsr[5] =  txtNomeCompleto.getText();
+		 AtributosNovosUsr[6] =  "professor";
+		 
+		 String[] NomeColunaUsr = new String[7];		 
+		 NomeColunaUsr[0] = "CPF_USR";
+		 NomeColunaUsr[1] = "RG_USR";
+		 NomeColunaUsr[2] = "DATANASCIMENTO";
+		 NomeColunaUsr[3] = "NOMEUSUARIO";
+		 NomeColunaUsr[4] = "SENHA";
+		 NomeColunaUsr[5] = "NOMECOMPLETO";
+		 NomeColunaUsr[6] = "TIPO_USUARIO";
+		 
+		 /*inserir primeiro em usuarios*/
+		 Trab_final.Interface inter = new Trab_final.Interface();
+		 inter.inserir(NomeTabelaUsr, NomeColunaUsr, AtributosNovosUsr);		 
+		 
+		 /*inserir o usuario no campo que foi especificado, no caso Aluno*/
+		 //pegando os campos para aluno
+		 String[] AtributosNovosAl = new String[4];
+		 AtributosNovosAl[0] = txtCPF.getText();
+		 AtributosNovosAl[1] = txtCodCor.getText();
+		 AtributosNovosAl[2] = txtCategoria.getText();
+		 AtributosNovosAl[3] = txtTitulacao.getText();
+		 
+		 String[] NomeColunaAl = new String[4];
+		 NomeColunaAl[0] = "CPFPROFESSOR";
+		 NomeColunaAl[1] = "TITULACAOPROFESSOR";
+		 NomeColunaAl[2] = "CATEGORIAPROFESSOR";
+		 NomeColunaAl[3] = "CODCURSOCOORDENADOR";
+		 
+		 inter.inserir(NomeTabelaProf,NomeColunaAl,AtributosNovosAl);
 		dispose();
 	}
 

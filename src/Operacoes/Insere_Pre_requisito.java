@@ -15,6 +15,7 @@ public class Insere_Pre_requisito extends javax.swing.JFrame {
 	private JLabel jLabel2;
 	private JTextField txtPreRequi;
 	private JLabel jLabel1;
+	private String NomeTabela = new String("L08_PREREQUISITO");
 	
 	public Insere_Pre_requisito() {
 		super();
@@ -68,7 +69,17 @@ public class Insere_Pre_requisito extends javax.swing.JFrame {
 	}
 	
 	private void btnInseirPreRequisitoActionPerformed(ActionEvent evt) {
-		dispose();
+		String[] AtributosNovos = new String[2];
+		AtributosNovos[0] = txtSiglaDisPossuiPre.getText();
+		AtributosNovos[1] = txtPreRequi.getText();		
+		
+		String[] NomeColuna = new String[2];
+		 NomeColuna[0] = "SIGLADISC";
+		 NomeColuna[1] = "SIGLAREQ";
+		 
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
+		dispose(); 
 	}
 
 }

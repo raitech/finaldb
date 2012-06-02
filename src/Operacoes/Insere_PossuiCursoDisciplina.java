@@ -27,6 +27,7 @@ public class Insere_PossuiCursoDisciplina extends javax.swing.JFrame {
 	private JTextField txtSiglaDisc;
 	private JButton txtInserirDiscInst;
 	private JTextField txtInstituto;
+	private String NomeTabela = new String("L10_POSSUI_CURSOINSTITUTO");
 
 	
 	public Insere_PossuiCursoDisciplina() {
@@ -81,6 +82,16 @@ public class Insere_PossuiCursoDisciplina extends javax.swing.JFrame {
 	}
 	
 	private void txtInserirDiscInstActionPerformed(ActionEvent evt) {
+		String[] AtributosNovos = new String[2];
+		AtributosNovos[0] = txtSiglaDisc.getText();
+		AtributosNovos[1] = txtInstituto.getText();
+		
+		String[] NomeColuna = new String[2];
+		 NomeColuna[0] = "CODCURSOP";
+		 NomeColuna[1] = "SIGINSTITUTOP";
+		
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
 		dispose();
 	}
 

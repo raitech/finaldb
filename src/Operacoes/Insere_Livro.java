@@ -9,18 +9,6 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class Insere_Livro extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
@@ -28,6 +16,7 @@ public class Insere_Livro extends javax.swing.JFrame {
 	private JButton btnOK;
 	private JTextField txtEditora;
 	private JTextField txtCod;
+	private String NomeTabela = new String("L15_LIVRO");
 
 	public Insere_Livro() {
 		super();
@@ -93,8 +82,17 @@ public class Insere_Livro extends javax.swing.JFrame {
 	}
 	
 	private void btnOKActionPerformed(ActionEvent evt) {
-		System.out.println("btnOK.actionPerformed, event="+evt);
-		//TODO add your code for btnOK.actionPerformed
+		String[] AtributosNovos = new String[2];
+		AtributosNovos[0] = txtCod.getText();
+		AtributosNovos[1] = txtEditora.getText();
+		
+		String[] NomeColuna = new String[2];
+		 NomeColuna[0] = "CODLIVRO";
+		 NomeColuna[1] = "EDITORA";
+		
+		
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
 	}
 	
 	private void btnVoltarActionPerformed(ActionEvent evt) {

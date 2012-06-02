@@ -35,6 +35,7 @@ public class Insere_Cursa extends javax.swing.JFrame {
 	private JTextField txtSiglaDiscCursa;
 	private JTextField txtCPFCurso;
 	private JLabel jLabel6;
+	private String NomeTabela = new String("L09_CURSA");
 
 	
 	public Insere_Cursa() {
@@ -133,6 +134,26 @@ public class Insere_Cursa extends javax.swing.JFrame {
 	}
 	
 	private void InserirCursaActionPerformed(ActionEvent evt) {
+		/*Pegando os atributos para user:*/
+		 String[] AtributosNovos = new String[6];
+		 AtributosNovos[0] = txtCPFCurso.getText();
+		 AtributosNovos[1] = txtSiglaDiscCursa.getText();
+		 AtributosNovos[2] = txtSemeAno.getText();
+		 AtributosNovos[3] =  txtNota.getText();
+		 AtributosNovos[4] =  txtFreq.getText();
+		 AtributosNovos[5] =  txtPorPrese.getText();
+		 
+		 String[] NomeColuna = new String[6];		 
+		 NomeColuna[0] = "CPFCURSA";
+		 NomeColuna[1] = "SIGLADISCIPLINACURSA";
+		 NomeColuna[2] = "ANOSEMESTRECURSA";
+		 NomeColuna[3] = "NOTACURSA";
+		 NomeColuna[4] = "NROAULASFREQCURSA";
+		 NomeColuna[5] = "PORCENTPRESENCACURSA";
+		 
+		 /*inserir primeiro em usuarios*/
+		 Trab_final.Interface inter = new Trab_final.Interface();
+		 inter.inserir(NomeTabela, NomeColuna, AtributosNovos);	
 		dispose();
 	}
 

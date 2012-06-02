@@ -16,6 +16,7 @@ public class Insere_Aula_equipamento extends javax.swing.JFrame {
 	private JTextField txtSiglaDisc;
 	private JTextField txtData;
 	private JButton btnInserirAE;
+	private String NomeTabela = new String("L13_USA_AULAEQUIPAMENTO");
 
 	public Insere_Aula_equipamento() {
 		super();
@@ -80,6 +81,19 @@ public class Insere_Aula_equipamento extends javax.swing.JFrame {
 	}
 	
 	private void btnInserirAEActionPerformed(ActionEvent evt) {
+		String[] AtributosNovos = new String[3];
+		AtributosNovos[0] = txtCodEqui.getText();
+		AtributosNovos[1] = txtSiglaDisc.getText();	
+		AtributosNovos[2] = txtData.getText();
+		
+		String[] NomeColuna = new String[3];
+		 NomeColuna[0] = "CODEQUIPAMENTO_USA";
+		 NomeColuna[1] = "SIGLADISCAP_USA";
+		 NomeColuna[2] = "DATAAP_USA";
+		 
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
+		dispose();
 		dispose();
 	}
 

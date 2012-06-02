@@ -38,6 +38,7 @@ public class Insere_Ref extends javax.swing.JFrame {
 	private JRadioButton jRadioLivro;
 	private JLabel jLabel6;
 	private JLabel jLabel1;
+	private String NomeTabela = new String("L14_REFERENCIA");
 
 	public Insere_Ref() {
 		super();
@@ -153,19 +154,33 @@ public class Insere_Ref extends javax.swing.JFrame {
 	}
 	
 	private void btnOKActionPerformed(ActionEvent evt) {
-		/*inserir na tabela referancia*/
-		
-		/*Chamar um artigo ou livro*/
-		
-		if(jRadioArtigo.isSelected()){
-				new Insere_Artigo();			
-		}
-		
+		if(jRadioArtigo.isSelected()){new Insere_Artigo();}		
 		else if(jRadioLivro.isSelected()){new Insere_Livro();}
 	}
 	
 	private void btnVoltarActionPerformed(ActionEvent evt) {
-		dispose();
+		String[] AtributosNovos = new String[6];
+		AtributosNovos[0] = txtCodigo.getText();
+		AtributosNovos[1] = txtQtd.getText();
+		AtributosNovos[2] = tyxtdescricao.getText();	
+		AtributosNovos[3] = txttitulo.getText();
+		AtributosNovos[4] = txtAutor.getText();	
+		
+		if(jRadioArtigo.isSelected()){ AtributosNovos[5] =  "artigo";}
+		else if(jRadioLivro.isSelected()){AtributosNovos[5] =  "livro";}
+		else {AtributosNovos[5] =  "outro";}
+		
+		String[] NomeColuna = new String[5];
+		 NomeColuna[0] = "CODREFERENCIA";
+		 NomeColuna[1] = "QTDPAGINAS";
+		 NomeColuna[2] = "DESCRICAO";
+		 NomeColuna[3] = "TITULO";
+		 NomeColuna[4] = "AUTOR";		 
+		 
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
+		dispose(); 
+	
 	}
 
 }

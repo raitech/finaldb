@@ -14,6 +14,8 @@ public class Insere_Aula_Pratica extends javax.swing.JFrame {
 	private JButton btnInserirAula;
 	private JTextField txtdataAP;
 	private JTextField txtDisciplina;
+	private String NomeTabela = new String("L11_AULAPRATICA");
+	
 
 	public Insere_Aula_Pratica() {
 		super();
@@ -67,6 +69,17 @@ public class Insere_Aula_Pratica extends javax.swing.JFrame {
 	}
 	
 	private void btnInserirAulaActionPerformed(ActionEvent evt) {
+		String[] AtributosNovos = new String[2];
+		AtributosNovos[0] = txtDisciplina.getText();
+		AtributosNovos[1] = txtdataAP.getText();
+		
+		String[] NomeColuna = new String[2];
+		 NomeColuna[0] = "SIGLADISCIPLINAAP";
+		 NomeColuna[1] = "DATAAP";
+		
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
+		
 		dispose();
 	}
 

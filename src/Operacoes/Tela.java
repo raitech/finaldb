@@ -1,12 +1,12 @@
 package Operacoes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.*;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
@@ -28,34 +28,29 @@ import Trab_final.Interface;
 */
 public class Tela extends javax.swing.JFrame {
 	private JButton btnInserir;
-	private JButton btnListar;
 	private JButton btnVoltar;
 	private JButton btnAtualizar;
 	private JButton btnRemover;
 	private String NomeTabela;
-	private DefaultTableModel modelo;
+	private ModeloTabela modelo;
 	private JTable tabela;
 	private JScrollPane scpane;
 	private Interface inter;
-	
+	private static String[] NomeColunas;
+    private static String[] TipoColunas;
+    private String[][] tuplas; 
+    private static int nColunas;
 
 	public Tela(String NomeTabela) {
 		super();
 		initGUI();
 		this.NomeTabela = NomeTabela;
 		inter = new Interface();
-		modelo = new DefaultTableModel();
+		modelo = new ModeloTabela();
 		
 		/*Precisa usar o nome tabela para chamar a funcao do splinter para criar a tabela*/  
-		inter.listar(this.NomeTabela, modelo);
-		
-        /*String[] colunas = {"CheckBox", "Nome", "Data nascimento"};
-        Object[][] conteudo = {
-            {new Boolean(false), "Isadora", "04/03/1991"},
-            {new Boolean(false), "Guilherme", "19/03/1991"}};
-        
-        modelo = new ModeloTabela(colunas, conteudo);*/
-        tabela = new JTable(modelo);
+		inter.listar(this.NomeTabela, modelo, NomeColunas,TipoColunas, nColunas,tuplas);
+		tabela = new JTable(modelo);
         tabela.setBounds(0, 0, 560, 440);
         
         // Torna a tabela verticalmente rolavel
@@ -77,8 +72,7 @@ public class Tela extends javax.swing.JFrame {
 				btnInserir = new JButton();
 				getContentPane().add(btnInserir);
 				btnInserir.setText("INSERIR");
-				btnInserir.setBounds(583, 12, 90, 25);
-				btnInserir.setSize(100, 25);
+				btnInserir.setBounds(583, 12, 100, 25);
 				btnInserir.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						btnInserirActionPerformed(evt);
@@ -89,8 +83,7 @@ public class Tela extends javax.swing.JFrame {
 				btnRemover = new JButton();
 				getContentPane().add(btnRemover);
 				btnRemover.setText("REMOVER");
-				btnRemover.setBounds(583, 43, 90, 25);
-				btnRemover.setSize(100, 25);
+				btnRemover.setBounds(583, 48, 100, 25);
 				btnRemover.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						btnRemoverActionPerformed(evt);
@@ -98,26 +91,13 @@ public class Tela extends javax.swing.JFrame {
 				});
 			}
 			{
-				btnListar = new JButton();
-				getContentPane().add(btnListar);
-				btnListar.setText("LISTAR");
-				btnListar.setBounds(583, 79, 90, 25);
-				btnListar.setSize(100, 25);
-				btnListar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						btnListarActionPerformed(evt);
-					}
-				});
-			}
-			{
 				btnAtualizar = new JButton();
 				getContentPane().add(btnAtualizar);
 				btnAtualizar.setText("ATUALIZAR");
-				btnAtualizar.setBounds(584, 110, 89, 23);
-				btnAtualizar.setSize(100, 25);
+				btnAtualizar.setBounds(583, 84, 100, 25);
 				btnAtualizar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
-						btnAtualizarActionPerformed(evt);
+						actionPerformed(evt);
 					}
 				});
 			}
@@ -140,16 +120,29 @@ public class Tela extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+	    
+    String[] getNomeColunas(){     	
+    	return NomeColunas;
+    }
+    
+    String[] getTuplas(){     	
+    	return NomeColunas;
+    }
+    
+    
+    String[] getTipoColunas(){     	
+    	return TipoColunas;
+    }
+    
+    int getNColunas(){     	
+    	return nColunas;
+    }
 	
 	private void btnVoltarActionPerformed(ActionEvent evt) {		
 		dispose();
 	}
 	
-	private void btnAtualizarActionPerformed(ActionEvent evt) {
-		System.out.println("btnAtualizar.actionPerformed, event="+evt);
-		//TODO add your code for btnAtualizar.actionPerformed
-	}
-	
+		
 	private void btnListarActionPerformed(ActionEvent evt) {
 		System.out.println("btnListar.actionPerformed, event="+evt);
 		//TODO add your code for btnListar.actionPerformed
@@ -160,58 +153,59 @@ public class Tela extends javax.swing.JFrame {
 		//TODO add your code for btnRemover.actionPerformed
 	}
 	
+		
 	private void btnInserirActionPerformed(ActionEvent evt) {
-		 if(NomeTabela.equals("Usuario")){
+		 if(NomeTabela.equals("L01_USUARIO")){
 			 Insere_User insere_user = new Insere_User();
 			 insere_user.show();
 		 }
 		
-		 else if(NomeTabela.equals("Curso")){
+		 else if(NomeTabela.equals("L02_CURSO")){
 				Insere_Curso insere_curso = new Insere_Curso();
 				insere_curso.show();
 		}
 		 
-	     else if(NomeTabela.equals("Disciplina")){
+	     else if(NomeTabela.equals("L07_DISCIPLINA")){
 			Insere_Disc insere_disc = new Insere_Disc();
 			insere_disc.show();
 		}
 		
-		else if(NomeTabela.equals("Instituto")){
+		else if(NomeTabela.equals("L06_INSTITUTO")){
 			Insere_Instituto insere_inst = new Insere_Instituto();
 			insere_inst.show();
 		}
 		 
-		else if(NomeTabela.equals("Pre-requisito")){
+		else if(NomeTabela.equals("L08_PREREQUISITO")){
 			Insere_Pre_requisito insere_pre = new Insere_Pre_requisito();
 			insere_pre.show();
 		}
 		 
-		else if(NomeTabela.equals("Cursa")){
+		else if(NomeTabela.equals("L09_CURSA")){
 			Insere_Cursa insere_cursa = new Insere_Cursa();
 			insere_cursa.show();
 		}
 		 
-		else if(NomeTabela.equals("Curso_instituto")){
+		else if(NomeTabela.equals("L10_POSSUI_CURSOINSTITUTO")){
 			Insere_PossuiCursoDisciplina insere_pcurso = new Insere_PossuiCursoDisciplina();
 			insere_pcurso.show();
 		}
 		 
-		else if(NomeTabela.equals("Aula_pr�tica")){
+		else if(NomeTabela.equals("L11_AULAPRATICA")){
 			Insere_Aula_Pratica insere_ap = new Insere_Aula_Pratica();
 			insere_ap.show();
 		}
 		 
-		else if(NomeTabela.equals("Equipamento")){
+		else if(NomeTabela.equals("L12_EQUIPAMENTO")){
 			Insere_Equipamento insere_eq = new Insere_Equipamento();
 			insere_eq.show();
 		}
 		
-		else if(NomeTabela.equals("Usa_aula_equipamento")){
+		else if(NomeTabela.equals("L13_USA_AULAEQUIPAMENTO")){
 			Insere_Aula_equipamento insere_Aequi = new Insere_Aula_equipamento();
 			insere_Aequi.show();
 		}
 		 
-		else if(NomeTabela.equals("Referencia")){
+		else if(NomeTabela.equals("L14_REFERENCIA")){
 			Insere_Instituto insere_inst = new Insere_Instituto();
 			insere_inst.show();
 		}
@@ -227,7 +221,7 @@ public class Tela extends javax.swing.JFrame {
 		}
 		 
 		else if(NomeTabela.equals("Utiliza_Disreferencia")){
-			Insere_Ref_Disc insere_Rdisc = new Insere_Ref_Disc();
+			Insere_UtilizaRef_Disc insere_Rdisc = new Insere_UtilizaRef_Disc();
 			insere_Rdisc.show();
 		}
 		

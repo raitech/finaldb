@@ -30,6 +30,7 @@ public class Insere_Artigo extends javax.swing.JFrame {
 	private JButton btnVoltar;
 	private JButton btnOK;
 	private JTextField txtConf;
+	private String NomeTabela = new String("L16_ARTIGO");
 
 	public Insere_Artigo() {
 		super();
@@ -105,8 +106,19 @@ public class Insere_Artigo extends javax.swing.JFrame {
 	}
 	
 	private void btnOKActionPerformed(ActionEvent evt) {
-		System.out.println("btnOK.actionPerformed, event="+evt);
-		//TODO add your code for btnOK.actionPerformed
+		String[] AtributosNovos = new String[3];
+		AtributosNovos[0] = txtCod.getText();
+		AtributosNovos[1] = txtURL.getText();
+		AtributosNovos[2] = txtConf.getText();
+		
+		String[] NomeColuna = new String[3];
+		 NomeColuna[0] = "CODARTIGO";
+		 NomeColuna[1] = "URL";
+		 NomeColuna[2] = "CONFERENCIA";
+		
+		
+		Trab_final.Interface inter = new Trab_final.Interface();
+		inter.inserir(NomeTabela, NomeColuna, AtributosNovos);
 	}
 	
 	private void btnVoltarActionPerformed(ActionEvent evt) {
