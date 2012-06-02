@@ -62,8 +62,25 @@ public class Menu extends javax.swing.JFrame {
 				{
 					ComboBoxModel cbonome_tabelaModel = 
 							new DefaultComboBoxModel(
-									new String[] { "Usuario", "Curso","Instituto","Disciplina","Pre-requisito","Cursa","Curso_instituto","Aula_prática",
-											       "Equipamento","Usa_aula_equipamento","Referencia","Livro","Artigo","Utiliza_Disreferencia" });
+									new String[] { 
+											"L01_USUARIO",
+											"L02_CURSO",
+											"L03_ALUNO",
+											"L04_PROFESSOR",
+											"L05_ADMINISTRADOR",
+											"L06_INSTITUTO",
+											"L07_DISCIPLINA",
+											"L08_PREREQUISITO",
+											"L09_CURSA",
+											"L10_POSSUI_CURSOINSTITUTO",
+											"L11_AULAPRATICA",
+											"L12_EQUIPAMENTO",
+											"L13_USA_AULAEQUIPAMENTO",
+											"L14_REFERENCIA",
+											"L15_LIVRO",
+											"L16_ARTIGO",
+											"L17_UTILIZA_DISCREFERENCIA"											
+									});
 					cbonome_tabela = new JComboBox();
 					getContentPane().add(cbonome_tabela);
 					cbonome_tabela.setModel(cbonome_tabelaModel);
@@ -86,7 +103,7 @@ public class Menu extends javax.swing.JFrame {
 				{
 					btnRel = new JButton();
 					getContentPane().add(btnRel);
-					btnRel.setText("RELATÓRIOS");
+					btnRel.setText("RELATï¿½RIOS");
 					btnRel.setBounds(141, 219, 119, 25);
 					btnRel.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
