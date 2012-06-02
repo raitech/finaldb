@@ -40,6 +40,8 @@ public class Tela extends javax.swing.JFrame {
     private static String[] TipoColunas;
     private String[][] tuplas; 
     private static int nColunas;
+    private String[] pk;
+    private String[] val_pk;
 
 	public Tela(String NomeTabela) {
 		super();
@@ -62,6 +64,17 @@ public class Tela extends javax.swing.JFrame {
         tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         
         add(scpane,null);
+        {
+        	btnAtualizar = new JButton();
+        	getContentPane().add(btnAtualizar);
+        	btnAtualizar.setText("ATUALIZAR");
+        	btnAtualizar.setBounds(583, 84, 100, 25);
+        	btnAtualizar.addActionListener(new ActionListener() {
+        		public void actionPerformed(ActionEvent evt) {
+        			btnAtualizarActionPerformed(evt);
+        		}
+        	});
+        }
 	}
 	
 	private void initGUI() {
@@ -91,17 +104,6 @@ public class Tela extends javax.swing.JFrame {
 				});
 			}
 			{
-				btnAtualizar = new JButton();
-				getContentPane().add(btnAtualizar);
-				btnAtualizar.setText("ATUALIZAR");
-				btnAtualizar.setBounds(583, 84, 100, 25);
-				btnAtualizar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent evt) {
-						actionPerformed(evt);
-					}
-				});
-			}
-			{
 				btnVoltar = new JButton();
 				getContentPane().add(btnVoltar);
 				btnVoltar.setText("VOLTAR");
@@ -121,20 +123,28 @@ public class Tela extends javax.swing.JFrame {
 		}
 	}
 	    
-    String[] getNomeColunas(){     	
+    public String[] getNomeColunas(){     	
     	return NomeColunas;
     }
     
-    String[] getTuplas(){     	
+    public String[] getTuplas(){     	
     	return NomeColunas;
     }
     
     
-    String[] getTipoColunas(){     	
+    public String[] getTipoColunas(){     	
     	return TipoColunas;
     }
     
-    int getNColunas(){     	
+    public String[] getPK(){     	
+    	return pk;
+    }
+    
+    public String[] getvalPk(){     	
+    	return val_pk;
+    }
+    
+    public int getNColunas(){     	
     	return nColunas;
     }
 	
@@ -143,8 +153,8 @@ public class Tela extends javax.swing.JFrame {
 	}
 	
 		
-	private void btnListarActionPerformed(ActionEvent evt) {
-		System.out.println("btnListar.actionPerformed, event="+evt);
+	private void btnAtualizarActionPerformed(ActionEvent evt) {
+		System.out.println("btnATUALIZAR.actionPerformed, event="+evt);
 		//TODO add your code for btnListar.actionPerformed
 	}
 	
@@ -224,11 +234,6 @@ public class Tela extends javax.swing.JFrame {
 			Insere_UtilizaRef_Disc insere_Rdisc = new Insere_UtilizaRef_Disc();
 			insere_Rdisc.show();
 		}
-		
-		
-		
-	
-			
 	}
 
 }

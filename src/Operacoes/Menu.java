@@ -6,20 +6,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import Relatorios.MenuRelatorios;
+import Relatorios.Relatorios;
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class Menu extends javax.swing.JFrame {
 	private JButton btnOk;
 	private JButton btnSair;
@@ -72,9 +62,8 @@ public class Menu extends javax.swing.JFrame {
 				{
 					ComboBoxModel cbonome_tabelaModel = 
 							new DefaultComboBoxModel(
-									new String[] { "L01_USUARIO", "L02_CURSO","L06_INSTITUTO","L07_DISCIPLINA","L08_PREREQUISITO",
-													"L09_CURSA","L10_POSSUI_CURSOINSTITUTO","L11_AULAPRATICA",
-											       "L12_EQUIPAMENTO","L13_USA_AULAEQUIPAMENTO","L14_REFERENCIA","L17_UTILIZA_DISCREFERENCIA" });
+									new String[] { "Usuario", "Curso","Instituto","Disciplina","Pre-requisito","Cursa","Curso_instituto","Aula_prática",
+											       "Equipamento","Usa_aula_equipamento","Referencia","Livro","Artigo","Utiliza_Disreferencia" });
 					cbonome_tabela = new JComboBox();
 					getContentPane().add(cbonome_tabela);
 					cbonome_tabela.setModel(cbonome_tabelaModel);
@@ -124,7 +113,8 @@ public class Menu extends javax.swing.JFrame {
 	}
 	
 	private void btnRelActionPerformed(ActionEvent evt) {
-		/*da um new na tabela da camila*/
+		MenuRelatorios mrel = new MenuRelatorios();
+		mrel.show();
 	}
 
 }

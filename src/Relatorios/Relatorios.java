@@ -1,5 +1,8 @@
-package Operacoes;
+package Relatorios;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JTable;
 
@@ -9,6 +12,19 @@ import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class Relatorios extends javax.swing.JFrame {
 	private JButton btnVoltar;
 	private JTable TabRelatorio;
@@ -27,6 +43,12 @@ public class Relatorios extends javax.swing.JFrame {
 				getContentPane().add(btnVoltar);
 				btnVoltar.setText("VOLTAR");
 				btnVoltar.setBounds(194, 326, 90, 25);
+				btnVoltar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent evt) {
+						btnVoltarActionPerformed(evt);
+					}
+				});
+
 			}
 			{
 				TableModel TabRelatorioModel = 
@@ -50,5 +72,8 @@ public class Relatorios extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
-
+	
+	private void btnVoltarActionPerformed(ActionEvent evt) {
+		dispose();
+	}
 }
