@@ -169,7 +169,7 @@ public class Edita_Usuario extends javax.swing.JFrame {
 		
 		 /*inserir primeiro em usuarios*/
 		 Trab_final.Interface inter = new Trab_final.Interface();
-		 inter.atualizar(NomeTabelaUsr, NomeColunaUsr, AtributosNovosUsr, pk, val_pk);		 
+		 		 
 		 
 		 dispose();
 	}
