@@ -65,7 +65,7 @@ public class Insere_Adm extends javax.swing.JFrame {
 			{
 				jLabel4 = new JLabel();
 				getContentPane().add(jLabel4);
-				jLabel4.setText("Nome usuário:");
+				jLabel4.setText("Nome usuario:");
 				jLabel4.setBounds(31, 110, 90, 16);
 			}
 			{
@@ -113,7 +113,7 @@ public class Insere_Adm extends javax.swing.JFrame {
 			{
 				jLabel7 = new JLabel();
 				getContentPane().add(jLabel7);
-				jLabel7.setText("Privilégio:");
+				jLabel7.setText("Privilegio:");
 				jLabel7.setBounds(30, 167, 90, 16);
 			}
 			{
@@ -135,7 +135,7 @@ public class Insere_Adm extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 268);
 		} catch (Exception e) {
-		    //add your error handling code here
+
 			e.printStackTrace();
 		}
 	}
@@ -164,8 +164,8 @@ public class Insere_Adm extends javax.swing.JFrame {
 		 Trab_final.Interface inter = new Trab_final.Interface();
 		 inter.inserir(NomeTabelaUsr, NomeColunaUsr, AtributosNovosUsr);		 
 		 
-		 /*inserir o usuario no campo que foi especificado, no caso Aluno*/
-		 //pegando os campos para aluno
+		 /*inserir o usuario no campo que foi especificado, no caso Admin*/
+		 //pegando os campos para admin
 		 String[] AtributosNovosAl = new String[2];
 		 AtributosNovosAl[0] = txtCPF.getText();
 		 AtributosNovosAl[1] = txtPriv.getText();

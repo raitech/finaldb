@@ -16,20 +16,6 @@ import javax.swing.event.TableModelEvent;
 
 import Trab_final.Interface;
 
-
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class Tela extends javax.swing.JFrame {
 	private JButton btnInserir;
 	private JButton btnVoltar;
@@ -53,7 +39,7 @@ public class Tela extends javax.swing.JFrame {
 		pk = new ArrayList<String>();
 		val_pk = new ArrayList<String>();
 		
-		/*Precisa usar o nome tabela para chamar a funcao do splinter para criar a tabela*/  
+		//Utilizar o nome da tabela
 		inter.listar(this.NomeTabela, modelo, pk);
 		tabela = new JTable(modelo);
         tabela.setBounds(0, 0, 560, 440);
@@ -122,7 +108,6 @@ public class Tela extends javax.swing.JFrame {
 			pack();
 			this.setSize(714, 500);
 		} catch (Exception e) {
-		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}
@@ -142,8 +127,6 @@ public class Tela extends javax.swing.JFrame {
 	
 		
 	private void btnAtualizarActionPerformed(ActionEvent evt) {
-		System.out.println("btnATUALIZAR.actionPerformed, event="+evt);
-		//TODO add your code for btnListar.actionPerformed
 	}
 	
 	
@@ -176,9 +159,6 @@ public class Tela extends javax.swing.JFrame {
 		System.out.println(pk);
 		System.out.println(val_pk);
 		inter.remover(NomeTabela, pk, val_pk);
-		/*modelo = new ModeloTabela();
-		inter.listar(this.NomeTabela, modelo, pk);
-		tabela.setModel(modelo);*/
 
 		
 	}

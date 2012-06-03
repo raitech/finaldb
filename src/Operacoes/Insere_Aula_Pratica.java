@@ -20,7 +20,7 @@ public class Insere_Aula_Pratica extends javax.swing.JFrame {
 	public Insere_Aula_Pratica() {
 		super();
 		initGUI();
-		setTitle("Inserir Aula Prática");
+		setTitle("Inserir Aula Pratica");
 	}
 	
 	private void initGUI() {
@@ -36,7 +36,7 @@ public class Insere_Aula_Pratica extends javax.swing.JFrame {
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
-				jLabel2.setText("Data da aula prática:");
+				jLabel2.setText("Data da aula pratica:");
 				jLabel2.setBounds(26, 65, 107, 16);
 			}
 			{
@@ -63,7 +63,6 @@ public class Insere_Aula_Pratica extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 166);
 		} catch (Exception e) {
-		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}

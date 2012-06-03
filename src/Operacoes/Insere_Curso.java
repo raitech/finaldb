@@ -9,19 +9,6 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class Insere_Curso extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
@@ -55,7 +42,7 @@ public class Insere_Curso extends javax.swing.JFrame {
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
-				jLabel2.setText("Código:");
+				jLabel2.setText("Codigo:");
 				jLabel2.setBounds(22, 67, 89, 16);
 			}
 			{
@@ -67,13 +54,13 @@ public class Insere_Curso extends javax.swing.JFrame {
 			{
 				jLabel4 = new JLabel();
 				getContentPane().add(jLabel4);
-				jLabel4.setText("Créditos Totais:");
+				jLabel4.setText("Creditos Totais:");
 				jLabel4.setBounds(22, 155, 91, 16);
 			}
 			{
 				jLabel5 = new JLabel();
 				getContentPane().add(jLabel5);
-				jLabel5.setText("Quantidade máxima de semestres:");
+				jLabel5.setText("Quantidade maxima de semestres:");
 				jLabel5.setBounds(22, 99, 199, 16);
 			}
 			{
@@ -115,8 +102,7 @@ public class Insere_Curso extends javax.swing.JFrame {
 			pack();
 			this.setSize(373, 300);
 		} catch (Exception e) {
-		    //add your error handling code here
-			e.printStackTrace();
+		    			e.printStackTrace();
 		}
 	}
 	

@@ -11,19 +11,6 @@ import javax.swing.WindowConstants;
 import Operacoes.Tela;
 
 
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
-@SuppressWarnings({ "serial", "unused" })
 public class MenuRelatorios extends javax.swing.JFrame {
 	private JRadioButton Cursos;
 	private JRadioButton Repetentes;
@@ -41,36 +28,36 @@ public class MenuRelatorios extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			getContentPane().setLayout(null);
-			this.setTitle("Relatórios");
+			this.setTitle("Relatorios");
 			{
 				Cursos = new JRadioButton();
 				getContentPane().add(Cursos);
 				Cursos.setText("Alunos matriculados nos cursos");
-				Cursos.setBounds(57, 33, 186, 20);
+				Cursos.setBounds(57, 33, 250, 20);
 			}
 			{
 				Repetentes = new JRadioButton();
 				getContentPane().add(Repetentes);
 				Repetentes.setText("Alunos repetentes");
-				Repetentes.setBounds(57, 68, 113, 20);
+				Repetentes.setBounds(57, 68, 250, 20);
 			}
 			{
 				PreRequisitos = new JRadioButton();
 				getContentPane().add(PreRequisitos);
-				PreRequisitos.setText("Disciplinas pré-requisitos");
-				PreRequisitos.setBounds(57, 102, 150, 20);
+				PreRequisitos.setText("Disciplinas pre-requisitos");
+				PreRequisitos.setBounds(57, 102, 250, 20);
 			}
 			{
 				Referencias = new JRadioButton();
 				getContentPane().add(Referencias);
 				Referencias.setText("Referências das disciplinas");
-				Referencias.setBounds(57, 137, 160, 20);
+				Referencias.setBounds(57, 137, 250, 20);
 			}
 			{
 				btnOK = new JButton();
 				getContentPane().add(btnOK);
 				btnOK.setText("OK");
-				btnOK.setBounds(194, 186, 90, 25);
+				btnOK.setBounds(239, 186, 90, 25);
 				btnOK.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent evt) {
 						btnOKActionPerformed(evt);
@@ -90,9 +77,8 @@ public class MenuRelatorios extends javax.swing.JFrame {
 				});
 			}
 			pack();
-			this.setSize(328, 278);
+			this.setSize(376, 278);
 		} catch (Exception e) {
-		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}
@@ -104,22 +90,22 @@ public class MenuRelatorios extends javax.swing.JFrame {
 
 		if(Cursos.isSelected())
 		{
-			Relatorios rel = new Relatorios();
+			Relatorios rel = new Relatorios("v_lista_cursos");
 	        rel.show();   
 		}
 		if(Repetentes.isSelected())
 		{
-			Relatorios rel = new Relatorios();
+			Relatorios rel = new Relatorios("v_repetentes");
 	        rel.show();   
 		}
 		if(PreRequisitos.isSelected())
 		{
-			Relatorios rel = new Relatorios();
+			Relatorios rel = new Relatorios("v_requisitos");
 	        rel.show();   
 		}
 		if(Referencias.isSelected())
 		{
-			Relatorios rel = new Relatorios();
+			Relatorios rel = new Relatorios("v_disciplinas_referencias");
 	        rel.show();   	
 		}
 	}

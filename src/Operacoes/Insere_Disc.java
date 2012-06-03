@@ -8,19 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class Insere_Disc extends javax.swing.JFrame {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
@@ -88,7 +75,7 @@ public class Insere_Disc extends javax.swing.JFrame {
 			{
 				jLabel6 = new JLabel();
 				getContentPane().add(jLabel6);
-				jLabel6.setText("Créditos");
+				jLabel6.setText("Creditos");
 				jLabel6.setBounds(19, 113, 44, 16);
 			}
 			{
@@ -106,7 +93,7 @@ public class Insere_Disc extends javax.swing.JFrame {
 			{
 				jLabel9 = new JLabel();
 				getContentPane().add(jLabel9);
-				jLabel9.setText("Método Avaliação");
+				jLabel9.setText("Metodo Avaliacao");
 				jLabel9.setBounds(19, 169, 96, 16);
 			}
 			{
@@ -179,8 +166,7 @@ public class Insere_Disc extends javax.swing.JFrame {
 			pack();
 			this.setSize(534, 456);
 		} catch (Exception e) {
-		    //add your error handling code here
-			e.printStackTrace();
+		    			e.printStackTrace();
 		}
 	}
 	

@@ -50,18 +50,18 @@ public class Conexao extends Frame implements ActionListener{
 				Interface.loadDriver();
 				System.out.println("\nCarregou o driver!!!");
 			} catch (ClassNotFoundException cnfe) {
-				System.out.println(cnfe + "\nNão carregou o driver!!!");
+				System.out.println(cnfe + "\nNao carregou o driver!!!");
 				System.exit(0);
 			}
 			
 			try {
 				Interface.connection = Interface.getConnection();
 				Interface.connection.setAutoCommit(true);
-				System.out.println("\nEstabeleceu conexão!!!");
+				System.out.println("\nEstabeleceu conexao!!!");
                                 new Menu().setVisible(true);
                                 dispose();
 			} catch(SQLException sqle) {
-				System.out.println(sqle + "\nNão estabeleceu conexão!!!");
+				System.out.println(sqle + "\nNao estabeleceu conexao!!!");
 				System.exit(0);
 			}
 			
@@ -71,9 +71,9 @@ public class Conexao extends Frame implements ActionListener{
 			
 			try {
 				Interface.connection.close();
-				System.out.println("\nConexão terminada!!!");
+				System.out.println("\nConexao terminada!!!");
 			} catch(SQLException sqle) {
-				System.out.println(sqle + "\nConexão com o BD não terminada com sucesso!!!");
+				System.out.println(sqle + "\nConexao com o BD nao terminada com sucesso!!!");
 				System.exit(0);
 			}
 			

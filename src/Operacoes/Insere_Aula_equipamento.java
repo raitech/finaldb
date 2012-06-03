@@ -31,7 +31,7 @@ public class Insere_Aula_equipamento extends javax.swing.JFrame {
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
-				jLabel1.setText("Código do equipamento:");
+				jLabel1.setText("Codigo do equipamento:");
 				jLabel1.setBounds(27, 19, 133, 16);
 			}
 			{
@@ -75,7 +75,6 @@ public class Insere_Aula_equipamento extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 172);
 		} catch (Exception e) {
-		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}

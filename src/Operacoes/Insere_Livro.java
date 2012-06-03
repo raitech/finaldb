@@ -31,7 +31,7 @@ public class Insere_Livro extends javax.swing.JFrame {
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
-				jLabel1.setText("Código:");
+				jLabel1.setText("Codigo:");
 				jLabel1.setBounds(24, 33, 63, 16);
 			}
 			{
@@ -76,8 +76,7 @@ public class Insere_Livro extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 191);
 		} catch (Exception e) {
-		    //add your error handling code here
-			e.printStackTrace();
+		    			e.printStackTrace();
 		}
 	}
 	

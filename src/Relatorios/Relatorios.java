@@ -2,8 +2,10 @@ package Relatorios;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import javax.swing.WindowConstants;
@@ -11,28 +13,45 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import Operacoes.ModeloTabela;
+import Trab_final.Interface;
 
-
-/**
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
 public class Relatorios extends javax.swing.JFrame {
 	private JButton btnVoltar;
 	private JTable TabRelatorio;
+	private String NomeTabela;
+	private ModeloTabela modelo;
+	private JTable tabela;
+	private JScrollPane scpane;
+	private Interface inter;
 	
-	public Relatorios() {
+    private ArrayList<String> pk;
+    
+	public Relatorios(String NomeTabela) {
 		super();
 		initGUI();
+		this.NomeTabela = NomeTabela;
+		inter = new Interface();
+		modelo = new ModeloTabela();
+		pk = new ArrayList<String>();
+		
+		//Utilizar nome da tabela
+		inter.listar(this.NomeTabela, modelo, pk);
+		tabela = new JTable(modelo);
+        tabela.setBounds(0, 0, 560, 440);
+        
+        // Torna a tabela verticalmente rolavel
+        scpane = new JScrollPane(tabela);
+        scpane.setBounds(10, 10, 560, 440);
+        scpane.setViewportView(tabela);
+        
+        // Torna a tabela horizontalmente rolavel
+        tabela.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        add(scpane,null);
+      
 	}
+	
 	
 	private void initGUI() {
 		try {
@@ -50,30 +69,17 @@ public class Relatorios extends javax.swing.JFrame {
 				});
 
 			}
-			{
-				TableModel TabRelatorioModel = 
-						new DefaultTableModel(
-								new String[][] { { "One", "Two" }, { "Three", "Four" } },
-								new String[] { "Column 1", "Column 2" });
-				TabRelatorio = new JTable();
-				GridLayout TabRelatorioLayout = new GridLayout(1, 1);
-				TabRelatorioLayout.setColumns(1);
-				TabRelatorioLayout.setHgap(5);
-				TabRelatorioLayout.setVgap(5);
-				getContentPane().add(TabRelatorio);
-				TabRelatorio.setModel(TabRelatorioModel);
-				TabRelatorio.setLayout(null);
-				TabRelatorio.setBounds(0, 0, 484, 317);
-			}
 			pack();
 			setSize(500, 400);
 		} catch (Exception e) {
-		    //add your error handling code here
-			e.printStackTrace();
+		    			e.printStackTrace();
 		}
 	}
-	
+	public ArrayList<String> getPK(){     	
+	    	return pk;
+    }
+	  
 	private void btnVoltarActionPerformed(ActionEvent evt) {
 		dispose();
 	}
-}
+	}

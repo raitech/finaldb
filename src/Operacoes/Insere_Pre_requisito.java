@@ -20,7 +20,7 @@ public class Insere_Pre_requisito extends javax.swing.JFrame {
 	public Insere_Pre_requisito() {
 		super();
 		initGUI();
-		setTitle("Inserir Pré-requisito");
+		setTitle("Inserir Pre-requisito");
 	}
 	
 	private void initGUI() {
