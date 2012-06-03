@@ -1,7 +1,7 @@
 package Operacoes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Vector;
+import java.util.*;
 
 import javax.swing.JButton;
 
@@ -40,8 +40,8 @@ public class Tela extends javax.swing.JFrame {
     private static String[] TipoColunas;
     private String[][] tuplas; 
     private static int nColunas;
-    private String[] pk;
-    private String[] val_pk;
+    private ArrayList<String> pk;
+    private ArrayList<String> val_pk;
 
 	public Tela(String NomeTabela) {
 		super();
@@ -49,9 +49,10 @@ public class Tela extends javax.swing.JFrame {
 		this.NomeTabela = NomeTabela;
 		inter = new Interface();
 		modelo = new ModeloTabela();
+		pk = new ArrayList<String>();
 		
 		/*Precisa usar o nome tabela para chamar a funcao do splinter para criar a tabela*/  
-		inter.listar(this.NomeTabela, modelo, NomeColunas,TipoColunas, nColunas,tuplas);
+		inter.listar(this.NomeTabela, modelo, pk);
 		tabela = new JTable(modelo);
         tabela.setBounds(0, 0, 560, 440);
         
@@ -136,11 +137,11 @@ public class Tela extends javax.swing.JFrame {
     	return TipoColunas;
     }
     
-    public String[] getPK(){     	
+    public ArrayList<String> getPK(){     	
     	return pk;
     }
     
-    public String[] getvalPk(){     	
+    public ArrayList<String> getvalPk(){     	
     	return val_pk;
     }
     
@@ -154,8 +155,76 @@ public class Tela extends javax.swing.JFrame {
 	
 		
 	private void btnAtualizarActionPerformed(ActionEvent evt) {
-		System.out.println("btnATUALIZAR.actionPerformed, event="+evt);
-		//TODO add your code for btnListar.actionPerformed
+				
+		 if(NomeTabela.equals("L01_USUARIO")){
+			 Insere_User insere_user = new Insere_User();
+			 insere_user.show();
+		 }
+		
+		 else if(NomeTabela.equals("L02_CURSO")){
+				Insere_Curso insere_curso = new Insere_Curso();
+				insere_curso.show();
+		}
+		 
+	     else if(NomeTabela.equals("L07_DISCIPLINA")){
+			Insere_Disc insere_disc = new Insere_Disc();
+			insere_disc.show();
+		}
+		
+		else if(NomeTabela.equals("L06_INSTITUTO")){
+			Insere_Instituto insere_inst = new Insere_Instituto();
+			insere_inst.show();
+		}
+		 
+		else if(NomeTabela.equals("L08_PREREQUISITO")){
+			Insere_Pre_requisito insere_pre = new Insere_Pre_requisito();
+			insere_pre.show();
+		}
+		 
+		else if(NomeTabela.equals("L09_CURSA")){
+			Insere_Cursa insere_cursa = new Insere_Cursa();
+			insere_cursa.show();
+		}
+		 
+		else if(NomeTabela.equals("L10_POSSUI_CURSOINSTITUTO")){
+			Insere_PossuiCursoDisciplina insere_pcurso = new Insere_PossuiCursoDisciplina();
+			insere_pcurso.show();
+		}
+		 
+		else if(NomeTabela.equals("L11_AULAPRATICA")){
+			Insere_Aula_Pratica insere_ap = new Insere_Aula_Pratica();
+			insere_ap.show();
+		}
+		 
+		else if(NomeTabela.equals("L12_EQUIPAMENTO")){
+			Insere_Equipamento insere_eq = new Insere_Equipamento();
+			insere_eq.show();
+		}
+		
+		else if(NomeTabela.equals("L13_USA_AULAEQUIPAMENTO")){
+			Insere_Aula_equipamento insere_Aequi = new Insere_Aula_equipamento();
+			insere_Aequi.show();
+		}
+		 
+		else if(NomeTabela.equals("L14_REFERENCIA")){
+			Insere_Instituto insere_inst = new Insere_Instituto();
+			insere_inst.show();
+		}
+		 
+		else if(NomeTabela.equals("Livro")){
+			Insere_Instituto insere_inst = new Insere_Instituto();
+			insere_inst.show();
+		}
+		 
+		else if(NomeTabela.equals("Artigo")){
+			Insere_Instituto insere_inst = new Insere_Instituto();
+			insere_inst.show();
+		}
+		 
+		else if(NomeTabela.equals("Utiliza_Disreferencia")){
+			Insere_UtilizaRef_Disc insere_Rdisc = new Insere_UtilizaRef_Disc();
+			insere_Rdisc.show();
+		}
 	}
 	
 	private void btnRemoverActionPerformed(ActionEvent evt) {
