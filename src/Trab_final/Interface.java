@@ -21,7 +21,7 @@ import oracle.sql.*;
 import oracle.jdbc.*;
 
 public class Interface {
-        /*Estabelecer uma conexão*/
+        /*Estabelecer uma conexï¿½o*/
         static Connection connection;
         
         static void loadDriver() throws ClassNotFoundException {
@@ -42,7 +42,7 @@ public class Interface {
 	            Connection myConnection = connection;
 	            
 	            String cmd_sql = new String();
-	            cmd_sql = "DECLARE atribs maneja_tabela.data_array_t :=  maneja_tabela.data_array_t() ; vals maneja_tabela.data_array_t := maneja_tabela.data_array_t(); BEGIN ";
+	            cmd_sql = "DECLARE atribs data_array_t :=  data_array_t() ; vals data_array_t := data_array_t(); BEGIN ";
 	            
 	            // inserindo nomes de atributos do varray
 	            for(int i=0 ; i<campos_da_tabela.length ; i++){
@@ -54,6 +54,10 @@ public class Interface {
 	                cmd_sql += " vals.extend();  vals(vals.LAST) := '" + novos_atributos[i] + "'; ";
 	            }
 	            
+	            // OPA!
+	            // PROBLEMA exemplo: se ao inserir um usuario que sera um professor,
+	            // der um pau nos dados do professor, entao o usuario sera inserido,
+	            // mas o professor nao!!! ...
 	            cmd_sql += " maneja_tabela.inserir('" + nome_tabela + "', atribs, vals); END;";
 	            
 	            System.out.println(cmd_sql);
@@ -63,17 +67,17 @@ public class Interface {
 	            
 	        }catch(SQLException sqle){
 	            if(sqle.getErrorCode() == 20002){
-	                System.out.println("\nNão é possível inserir chave duplicada!\n");
+	                System.out.println("\nNï¿½o ï¿½ possï¿½vel inserir chave duplicada!\n");
 	            }
 	            if(sqle.getErrorCode() == 20001){
-	                System.out.println("\nVerifique se os valores de liderança, conhecimento técnico, conhecimento"
-	                        + "geral, relacionamento social e tolerancia à hierarquia estão entre 0 e 10 ");
+	                System.out.println("\nVerifique se os valores de lideranï¿½a, conhecimento tï¿½cnico, conhecimento"
+	                        + "geral, relacionamento social e tolerancia ï¿½ hierarquia estï¿½o entre 0 e 10 ");
 	            }
 	            if(sqle.getErrorCode() == 20000){
-	                System.out.println("\nCampos obrigatórios não preenchidos");
+	                System.out.println("\nCampos obrigatï¿½rios nï¿½o preenchidos");
 	            }
 	            sqle.printStackTrace();
-	            System.out.println(sqle + "\nProblema na hora da inserção do candidato!\n");
+	            System.out.println(sqle + "\nProblema na hora da inserï¿½ï¿½o do candidato!\n");
 	        }
 	    }
 	    
@@ -106,20 +110,20 @@ public class Interface {
 	            
 	        }catch(SQLException sqle){
 	            if(sqle.getErrorCode() == 20002){
-	                System.out.println("\nNão é possível inserir chave duplicada!\n");
+	                System.out.println("\nNï¿½o ï¿½ possï¿½vel inserir chave duplicada!\n");
 	            }
 	            if(sqle.getErrorCode() == 20001){
-	                System.out.println("\nVerifique se os valores de liderança, conhecimento técnico, conhecimento"
-	                        + "geral, relacionamento social e tolerancia à hierarquia estão entre 0 e 10 ");
+	                System.out.println("\nVerifique se os valores de lideranï¿½a, conhecimento tï¿½cnico, conhecimento"
+	                        + "geral, relacionamento social e tolerancia ï¿½ hierarquia estï¿½o entre 0 e 10 ");
 	            }
 	            if(sqle.getErrorCode() == 20000){
-	                System.out.println("\nCampos obrigatórios não preenchidos");
+	                System.out.println("\nCampos obrigatï¿½rios nï¿½o preenchidos");
 	            }
 	            if(sqle.getErrorCode() == 2292){
-	                JOptionPane.showMessageDialog(null, "Restrição de integridade violada - registro filho localizado\n" +sqle.getMessage(), "ERRO FATAL", JOptionPane.ERROR_MESSAGE);
+	                JOptionPane.showMessageDialog(null, "Restriï¿½ï¿½o de integridade violada - registro filho localizado\n" +sqle.getMessage(), "ERRO FATAL", JOptionPane.ERROR_MESSAGE);
 	            }
 	            sqle.printStackTrace();
-	            System.out.println(sqle + "\nProblema na hora da inserção do candidato!\n");
+	            System.out.println(sqle + "\nProblema na hora da inserï¿½ï¿½o!\n");
 	        }
 	    }	
 	
