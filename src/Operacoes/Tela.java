@@ -153,7 +153,7 @@ public class Tela extends javax.swing.JFrame {
 		int ncol = tabela.getColumnCount(); 
 		ArrayList<Integer> v_coluna_pk = new ArrayList<Integer>();
 		
-		//percorre em que coluna é a chave primaria
+		//percorre em que coluna ï¿½ a chave primaria
 		for(int j = 0; j<pk.size();j++ ){
 			for(int i = 0; i< ncol;i++)
 				if(tabela.getColumnName(i).equals(pk.get(j))){
@@ -176,9 +176,9 @@ public class Tela extends javax.swing.JFrame {
 		System.out.println(pk);
 		System.out.println(val_pk);
 		inter.remover(NomeTabela, pk, val_pk);
-		modelo = new ModeloTabela();
+		/*modelo = new ModeloTabela();
 		inter.listar(this.NomeTabela, modelo, pk);
-		tabela.setModel(modelo);
+		tabela.setModel(modelo);*/
 
 		
 	}
