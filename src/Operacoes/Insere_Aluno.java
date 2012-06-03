@@ -11,6 +11,19 @@ import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.SwingUtilities;
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class Insere_Aluno extends javax.swing.JFrame {
 
 	private JLabel jLabel1;
@@ -34,6 +47,11 @@ public class Insere_Aluno extends javax.swing.JFrame {
 	private JLabel jLabel6;
 	private String NomeTabelaAl = new String("L03_ALUNO");
 	private String NomeTabelaUsr = new String("L01_USUARIO");
+	/*
+	private String [] AtributosNovosUsr;
+	private String [] NomeColunaUsr;
+	private String [] AtributosNovosAl;
+	private String [] NomeColunaAl;*/
 
 	public Insere_Aluno() {
 		super();
@@ -66,7 +84,7 @@ public class Insere_Aluno extends javax.swing.JFrame {
 			{
 				jLabel4 = new JLabel();
 				getContentPane().add(jLabel4);
-				jLabel4.setText("Nome usuario:");
+				jLabel4.setText("Nome usuário:");
 				jLabel4.setBounds(31, 110, 90, 16);
 			}
 			{
@@ -114,7 +132,7 @@ public class Insere_Aluno extends javax.swing.JFrame {
 			{
 				jLabel7 = new JLabel();
 				getContentPane().add(jLabel7);
-				jLabel7.setText("Codigo curso:");
+				jLabel7.setText("Código curso:");
 				jLabel7.setBounds(30, 167, 90, 16);
 			}
 			{
@@ -126,7 +144,7 @@ public class Insere_Aluno extends javax.swing.JFrame {
 			{
 				jLabel11 = new JLabel();
 				getContentPane().add(jLabel11);
-				jLabel11.setText("Endereco:");
+				jLabel11.setText("Endereço:");
 				jLabel11.setBounds(30, 221, 76, 16);
 			}
 			{
@@ -158,6 +176,7 @@ public class Insere_Aluno extends javax.swing.JFrame {
 			pack();
 			this.setSize(400, 328);
 		} catch (Exception e) {
+		    //add your error handling code here
 			e.printStackTrace();
 		}
 	}

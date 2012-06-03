@@ -30,8 +30,7 @@ public class Interface {
                 }
 
         static Connection getConnection() throws SQLException {
-                      // return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "u7152138", "u7152138");
-        				return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "u6511182", "u6511182");
+                       return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "u7152138", "u7152138");
                 }
 
         

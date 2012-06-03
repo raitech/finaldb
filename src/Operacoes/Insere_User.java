@@ -10,6 +10,18 @@ import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
 
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class Insere_User extends javax.swing.JFrame {
 	private JRadioButton jR_Aluno;
 	private JRadioButton jR_Prof;
@@ -52,7 +64,7 @@ public class Insere_User extends javax.swing.JFrame {
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
-				jLabel1.setText("Que tipo de usuario deseja inserir?");
+				jLabel1.setText("Que tipo de usuário deseja inserir?");
 				jLabel1.setBounds(40, 24, 371, 46);
 				jLabel1.setFont(new java.awt.Font("Segoe UI",1,20));
 			}
@@ -88,6 +100,7 @@ public class Insere_User extends javax.swing.JFrame {
 	
 	private void btnInsereUsrActionPerformed(ActionEvent evt) {
 		if(jR_Prof.isSelected()){
+			//inserir usuario depois professor!
 			Insere_Professor insere_prof = new Insere_Professor();
 			insere_prof.show();
 			

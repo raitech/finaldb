@@ -9,6 +9,19 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
 
+
+/**
+* This code was edited or generated using CloudGarden's Jigloo
+* SWT/Swing GUI Builder, which is free for non-commercial
+* use. If Jigloo is being used commercially (ie, by a corporation,
+* company or business for any purpose whatever) then you
+* should purchase a license for each developer using Jigloo.
+* Please visit www.cloudgarden.com for details.
+* Use of Jigloo implies acceptance of these licensing terms.
+* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+*/
 public class Insere_Ref extends javax.swing.JFrame {
 	private JButton btnOK;
 	private JButton btnVoltar;
@@ -62,25 +75,25 @@ public class Insere_Ref extends javax.swing.JFrame {
 			{
 				jLabel1 = new JLabel();
 				getContentPane().add(jLabel1);
-				jLabel1.setText("Codigo:");
+				jLabel1.setText("Código:");
 				jLabel1.setBounds(21, 27, 42, 16);
 			}
 			{
 				jLabel2 = new JLabel();
 				getContentPane().add(jLabel2);
-				jLabel2.setText("Quantidade de paginas:");
+				jLabel2.setText("Quantidade de páginas:");
 				jLabel2.setBounds(21, 56, 125, 16);
 			}
 			{
 				jLabel3 = new JLabel();
 				getContentPane().add(jLabel3);
-				jLabel3.setText("Descricao:");
+				jLabel3.setText("Descrição:");
 				jLabel3.setBounds(17, 141, 54, 16);
 			}
 			{
 				jLabel4 = new JLabel();
 				getContentPane().add(jLabel4);
-				jLabel4.setText("Titulo:");
+				jLabel4.setText("Título:");
 				jLabel4.setBounds(21, 84, 34, 16);
 			}
 			{

@@ -18,6 +18,9 @@ public class Menu extends javax.swing.JFrame {
 	private JLabel lblescolha;
 	private JComboBox cbonome_tabela;
 
+	/**
+	* Auto-generated main method to display this JFrame
+	*/
 	public static void main(String[] args) {
 		  new Trab_final.Conexao();
 	}
@@ -100,7 +103,7 @@ public class Menu extends javax.swing.JFrame {
 				{
 					btnRel = new JButton();
 					getContentPane().add(btnRel);
-					btnRel.setText("RELATORIOS");
+					btnRel.setText("RELAT�RIOS");
 					btnRel.setBounds(141, 219, 119, 25);
 					btnRel.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent evt) {
