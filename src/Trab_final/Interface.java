@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +21,7 @@ import oracle.sql.*;
 import oracle.jdbc.*;
 
 public class Interface {
-        /*Estabelecer uma conexï¿½o*/
+        /*Estabelecer uma conexão*/
         static Connection connection;
         
         static void loadDriver() throws ClassNotFoundException {
@@ -62,17 +63,17 @@ public class Interface {
 	            
 	        }catch(SQLException sqle){
 	            if(sqle.getErrorCode() == 20002){
-	                System.out.println("\nNï¿½o ï¿½ possï¿½vel inserir chave duplicada!\n");
+	                System.out.println("\nNão é possível inserir chave duplicada!\n");
 	            }
 	            if(sqle.getErrorCode() == 20001){
-	                System.out.println("\nVerifique se os valores de lideranï¿½a, conhecimento tï¿½cnico, conhecimento"
-	                        + "geral, relacionamento social e tolerancia ï¿½ hierarquia estï¿½o entre 0 e 10 ");
+	                System.out.println("\nVerifique se os valores de liderança, conhecimento técnico, conhecimento"
+	                        + "geral, relacionamento social e tolerancia à hierarquia estão entre 0 e 10 ");
 	            }
 	            if(sqle.getErrorCode() == 20000){
-	                System.out.println("\nCampos obrigatï¿½rios nï¿½o preenchidos");
+	                System.out.println("\nCampos obrigatórios não preenchidos");
 	            }
 	            sqle.printStackTrace();
-	            System.out.println(sqle + "\nProblema na hora da inserï¿½ï¿½o do candidato!\n");
+	            System.out.println(sqle + "\nProblema na hora da inserção do candidato!\n");
 	        }
 	    }
 	    
@@ -84,7 +85,7 @@ public class Interface {
 	            Connection myConnection = connection;
 	            
 	            String cmd_sql = new String();
-	            cmd_sql = "DECLARE atribs maneja_tabela.data_array_t :=  maneja_tabela.data_array_t() ; vals maneja_tabela.data_array_t := maneja_tabela.data_array_t(); BEGIN ";
+	            cmd_sql = "DECLARE atribs data_array_t :=  data_array_t() ; vals data_array_t := data_array_t(); BEGIN ";
 	            
 	            // inserindo nomes de atributos do varray
 	            for(int i=0 ; i<pk.size() ; i++){
@@ -105,22 +106,25 @@ public class Interface {
 	            
 	        }catch(SQLException sqle){
 	            if(sqle.getErrorCode() == 20002){
-	                System.out.println("\nNï¿½o ï¿½ possï¿½vel inserir chave duplicada!\n");
+	                System.out.println("\nNão é possível inserir chave duplicada!\n");
 	            }
 	            if(sqle.getErrorCode() == 20001){
-	                System.out.println("\nVerifique se os valores de lideranï¿½a, conhecimento tï¿½cnico, conhecimento"
-	                        + "geral, relacionamento social e tolerancia ï¿½ hierarquia estï¿½o entre 0 e 10 ");
+	                System.out.println("\nVerifique se os valores de liderança, conhecimento técnico, conhecimento"
+	                        + "geral, relacionamento social e tolerancia à hierarquia estão entre 0 e 10 ");
 	            }
 	            if(sqle.getErrorCode() == 20000){
-	                System.out.println("\nCampos obrigatï¿½rios nï¿½o preenchidos");
+	                System.out.println("\nCampos obrigatórios não preenchidos");
+	            }
+	            if(sqle.getErrorCode() == 2292){
+	                JOptionPane.showMessageDialog(null, "Restrição de integridade violada - registro filho localizado\n" +sqle.getMessage(), "ERRO FATAL", JOptionPane.ERROR_MESSAGE);
 	            }
 	            sqle.printStackTrace();
-	            System.out.println(sqle + "\nProblema na hora da inserï¿½ï¿½o do candidato!\n");
+	            System.out.println(sqle + "\nProblema na hora da inserção do candidato!\n");
 	        }
 	    }	
 	
 	    
-	    public /*static*/ void listar(String nome_tabela, DefaultTableModel modelo, ArrayList<String> pk){
+	    public void listar(String nome_tabela, DefaultTableModel modelo, ArrayList<String> pk){
 	    	try{
 	    		OracleCallableStatement psmt = null; 
 	    		Connection myConnection = connection;
@@ -128,7 +132,7 @@ public class Interface {
 	            String cmd_sql = new String();
 	            cmd_sql =  "{ call ? := maneja_tabela.listar('" + nome_tabela + "', ?, ?, ?) }";            
 
-	            System.out.println(cmd_sql);
+	            //System.out.println(cmd_sql);
 	            psmt = (OracleCallableStatement) myConnection.prepareCall(cmd_sql);
 
 	            psmt.registerOutParameter(1, OracleTypes.CURSOR);
@@ -138,35 +142,22 @@ public class Interface {
 
 	            psmt.executeUpdate();
 
-	            //if(psmt.getArray(4) != null)System.out.println("not null");
-
 	            ResultSet rsc = (ResultSet)psmt.getObject(1);
 	            ARRAY NomeAtrib = psmt.getARRAY(4);
 	            ARRAY TipoConstraintAtrib = psmt.getARRAY(3);
 
 	            int nColunas = psmt.getInt(2);
-	            //Array TipoCons = psmt.getArray(3);
-	            //Array NomeAtrib = psmt.getArray(4);
-
-
-	            //NomeColunas = new String[nColunas];
-	            //TipoColunas = new String[nColunas];
+	            
 	            String[] NomeColunas = (String[]) NomeAtrib.getArray();
-	            String[] TipoColunas = (String[]) TipoConstraintAtrib.getArray();
-	            //tabela_tuplas = new ArrayList<String>();
+	            String []TipoColunas = (String[]) TipoConstraintAtrib.getArray();
+	           
 	            
 	            modelo.addColumn("CheckBox");
-	            for(int i=0;i<nColunas;i++){
-	            	//NomeColunas[i] = (String)rsACol[i];
-	            	//TipoColunas[i] = (String)rsATipo[i];
+	            for(int i=0;i<nColunas;i++){	            	
 	            	modelo.addColumn(NomeColunas[i]);
-	            	if(TipoColunas[i].contains("P")) {
+	            	if(TipoColunas[i].contains("P")){
 	            		pk.add(NomeColunas[i]);
 	            	}
-	            }
-	            
-	            for(int i = 0; i < pk.size(); i++) {
-	            	System.out.println(pk.get(i));
 	            }
 
 	            while (rsc.next()) {
@@ -177,7 +168,7 @@ public class Interface {
 	            	}
 	            	modelo.addRow(tmp);
 				}
-
+	            	
 
 	        }catch(SQLException sqle){
 	            if(sqle.getErrorCode() == 20000){
@@ -189,62 +180,7 @@ public class Interface {
 
 	    }
 	    
-	    /*atualiza uma tupla*/
-	    public void atualizar(String nome_tabela, String[] atribs, String[] vals, String[] pk, String[] val_pk){
-		      
-	        try{
-	            CallableStatement psmt;
-	            Connection myConnection = connection;
-	            
-	            String cmd_sql = new String();
-	            cmd_sql = "DECLARE " +
-	            		"atribs maneja_tabela.data_array_t :=  maneja_tabela.data_array_t();" +
-	            		"vals maneja_tabela.data_array_t := maneja_tabela.data_array_t();" +
-	            		"pk maneja_tabela.data_array_t := maneja_tabela.data_array_t();" +
-	            		"val_pk maneja_tabela.data_array_t := maneja_tabela.data_array_t();" +
-	            		" BEGIN ";
-	            
-	            // inserindo nomes de atributos no varray
-	            for(int i=0 ; i<atribs.length ; i++){
-	                cmd_sql += " atribs.extend();  atribs(atribs.LAST) := '" + atribs[i] + "'; ";
-	            }
-	            
-	            // inserindo valores de cada atributo no varray
-	            for(int i=0 ; i<atribs.length ; i++){
-	                cmd_sql += " vals.extend();  vals(vals.LAST) := '" + vals[i] + "'; ";
-	            }
-
-	            // inserindo nomes de PK no varray
-	            for(int i=0 ; i<pk.length ; i++){
-	                cmd_sql += " pk.extend();  pk(pk.LAST) := '" + pk[i] + "'; ";
-	            }
-	            
-	            // inserindo valores de cada atributo no varray
-	            for(int i=0 ; i<pk.length ; i++){
-	                cmd_sql += " val_pk.extend();  val_pk(val_pk.LAST) := '" + val_pk[i] + "'; ";
-	            }
-	            cmd_sql += " maneja_tabela.atualizar('" + nome_tabela + "', atribs, vals, pk, val_pk); END;";
-	            
-	            System.out.println(cmd_sql);
-	            psmt = myConnection.prepareCall(cmd_sql); 
-	            psmt.executeUpdate();
-	            
-	            
-	        }catch(SQLException sqle){
-	            if(sqle.getErrorCode() == 20002){
-	                System.out.println("\nNï¿½o ï¿½ possï¿½vel inserir chave duplicada!\n");
-	            }
-	            if(sqle.getErrorCode() == 20001){
-	                System.out.println("\nVerifique se os valores de lideranï¿½a, conhecimento tï¿½cnico, conhecimento"
-	                        + "geral, relacionamento social e tolerancia ï¿½ hierarquia estï¿½o entre 0 e 10 ");
-	            }
-	            if(sqle.getErrorCode() == 20000){
-	                System.out.println("\nCampos obrigatï¿½rios nï¿½o preenchidos");
-	            }
-	            sqle.printStackTrace();
-	            System.out.println(sqle + "\nProblema na hora da inserï¿½ï¿½o do candidato!\n");
-	        }
-	    }
+    
     
 
 } 
